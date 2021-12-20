@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options
+{
+	"name": ".NetCore ENV",
+	"build": {
+		"target": "",
+		"dockerfile": "Dockerfile",
+		"args": {
+			"CoreVer": "3.1",
+		}
+	},
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"explorer.compactFolders": false,
+		"security.workspace.trust.enabled": true,
+		"editor.minimap.enabled": false,
+		"npm.enableScriptExplorer": true,
+		"terminal.integrated.shell.linux": "/bin/bash",
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-dotnettools.csharp",
+		"rangav.vscode-thunder-client",
+		"vscode-icons-team.vscode-icons"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	//"forwardPorts": [8080],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash .devcontainer/init.sh",
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	//"remoteUser": "vscode"
+}
